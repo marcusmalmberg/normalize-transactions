@@ -1,0 +1,43 @@
+{
+  "name": "normalize-transactions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "normalize-transactions",
+  "packageManager": "yarn@3.5.0",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop --host 0.0.0.0",
+    "start": "gatsby develop --host 0.0.0.0",
+    "build": "gatsby build --prefix-paths",
+    "serve": "gatsby serve --host 0.0.0.0",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/material": "^5.5.3",
+    "gatsby": "^4.11.1",
+    "gatsby-plugin-material-ui": "next",
+    "gatsby-plugin-react-helmet": "^5.11.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-material-file-upload": "^0.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "@types/react": "^17.0.43",
+    "@types/react-dom": "^17.0.14",
+    "@yarnpkg/sdks": "^2.6.0",
+    "gatsby-cli": "^4.11.1",
+    "gatsby-plugin-postcss": "^5.11.0",
+    "gatsby-plugin-sass": "^5.11.1",
+    "postcss": "^8.4.12",
+    "sass": "^1.49.11",
+    "typescript": "^4.6.3"
+  }
+}
