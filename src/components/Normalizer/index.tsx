@@ -5,17 +5,46 @@ import Grid from '@mui/material/Grid'
 import Container from "@mui/material/Container"
 
 import Title from '../Title'
+import FileInputSelector, { InputKind } from "./FileInputSelector"
 
 const Item = ({ children }: { children: any }): JSX.Element => {
   return <div>{children}</div>
 }
 
-const FileThingy = (file: File) => {
-  return <div>{file.name}</div>
+export interface UploadedFile {
+  file: File;
+  kind: InputKind,
+}
+
+interface UploadedFileMap {
+  [handle: string]: UploadedFile;
 }
 
 const Normalizer = (): JSX.Element => {
-  const [files, setFiles] = useState<File[]>([]);
+  const [inputFiles, setInputFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<UploadedFileMap>({});
+
+  const handleUpload = (files: File[]) => {
+    setInputFiles(files)
+    let fileMap: UploadedFileMap = {}
+    files.forEach((file: File) => {
+      fileMap[file.name] = {
+        file,
+        kind: InputKind.Unsure,
+      }
+    })
+    setFiles(fileMap)
+  }
+
+  const handleFileKindChanged = (file: File, kind: InputKind) => {
+    setFiles({
+      ...files,
+      [file.name]: {
+        ...files[file.name],
+        kind: kind,
+      },
+    })
+  }
 
   return (
     <div style={{ backgroundColor: "#f5f5f5", minHeight: '100vh' }}>
@@ -27,7 +56,7 @@ const Normalizer = (): JSX.Element => {
             <Item>
               <Title>1. Ladda upp filer</Title>
               <Paper sx={{ p: 2 }}>
-                <FileUpload value={files} onChange={setFiles} />
+                <FileUpload value={inputFiles} onChange={handleUpload} />
               </Paper>
             </Item>
 
@@ -38,7 +67,7 @@ const Normalizer = (): JSX.Element => {
                 {
                   // TODO: For each file: Select which kind of transactions. Then on change normalize/convert it to a common output
                 }
-                {files.map(file => FileThingy(file))}
+                {Object.values(files).map(file => <FileInputSelector key={file.file.name} inputFile={file} onChange={handleFileKindChanged} />)}
               </Paper>
             </Item>
 
