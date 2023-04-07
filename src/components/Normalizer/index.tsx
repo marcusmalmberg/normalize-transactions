@@ -1,11 +1,13 @@
 import React, { useState } from "react"
-import FileUpload from 'react-material-file-upload';
+import FileUpload from 'react-material-file-upload'
 import Paper from '@mui/material/Paper'
 import Grid from '@mui/material/Grid'
 import Container from "@mui/material/Container"
+import Button from "@mui/material/Button"
 
 import Title from '../Title'
 import FileInputSelector, { InputKind } from "./FileInputSelector"
+import { generate, FileContents } from "./normalize";
 
 const Item = ({ children }: { children: any }): JSX.Element => {
   return <div>{children}</div>
@@ -14,9 +16,10 @@ const Item = ({ children }: { children: any }): JSX.Element => {
 export interface UploadedFile {
   file: File;
   kind: InputKind,
+  data?: FileContents,
 }
 
-interface UploadedFileMap {
+export interface UploadedFileMap {
   [handle: string]: UploadedFile;
 }
 
@@ -30,7 +33,7 @@ const Normalizer = (): JSX.Element => {
     files.forEach((file: File) => {
       fileMap[file.name] = {
         file,
-        kind: InputKind.Unsure,
+        kind: InputKind.UNSURE,
       }
     })
     setFiles(fileMap)
@@ -76,6 +79,24 @@ const Normalizer = (): JSX.Element => {
               <Title>3. Granska output</Title>
               <Paper sx={{ p: 2 }}>
                 {
+                  <Button variant="contained" onClick={async () => {
+                    setFiles(await generate(files))
+                  }}>Generate</Button>
+                }
+                {
+                  Object.values(files).map(file => {
+                    return <table>
+                      <tbody>
+                        {file.data?.map((row: Array<unknown>) => (
+                          <tr>
+                            {Object.values(row).map(col => (
+                              <td>{col}</td>
+                            ))}
+                          </tr>)
+                        )}
+                      </tbody>
+                    </table>
+                  })
                   // TODO: Show normalized output that can be copied and pasted to google sheets
                 }
               </Paper>

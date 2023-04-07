@@ -8,10 +8,10 @@ import MenuItem from '@mui/material/MenuItem';
 import { UploadedFile } from './index'
 
 export enum InputKind {
-  Unsure = "Unsure",
-  Smex = "Amex",
-  SEB = "SEB",
-  Swedbank = "Swedbank",
+  UNSURE = "unsure",
+  AMEX = "amex",
+  SEB = "seb",
+  SWEDBANK = "swedbank",
 }
 
 interface FileInputSelectorProps {
@@ -21,7 +21,6 @@ interface FileInputSelectorProps {
 
 const FileInputSelector = ({ inputFile, onChange }: FileInputSelectorProps): JSX.Element => {
 
-  console.log(inputFile, inputFile.kind, onChange);
   const handleChange = (event: SelectChangeEvent) => { onChange(inputFile.file, event.target.value as InputKind) }
 
   return <div>
@@ -34,7 +33,7 @@ const FileInputSelector = ({ inputFile, onChange }: FileInputSelectorProps): JSX
         label="Typ"
       >
         {(Object.keys(InputKind) as Array<keyof typeof InputKind>).map((kind) =>
-          <MenuItem key={kind} value={kind}>{InputKind[kind]}</MenuItem>
+          <MenuItem key={kind} value={InputKind[kind]}>{InputKind[kind]}</MenuItem>
         )}
       </Select>
     </FormControl>
