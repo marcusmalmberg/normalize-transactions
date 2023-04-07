@@ -83,22 +83,21 @@ const Normalizer = (): JSX.Element => {
                     setFiles(await generate(files))
                   }}>Generate</Button>
                 }
-                {
-                  Object.values(files).map(file => {
-                    return <table>
-                      <tbody>
-                        {file.data?.map((row: Array<unknown>) => (
+                <table>
+                  <tbody>
+                    {
+                      Object.values(files).map(file => {
+                        return file.data?.map((row: Array<unknown>) => (
                           <tr>
                             {Object.values(row).map(col => (
                               <td>{col}</td>
                             ))}
                           </tr>)
-                        )}
-                      </tbody>
-                    </table>
-                  })
-                  // TODO: Show normalized output that can be copied and pasted to google sheets
-                }
+                        )
+                      })
+                    }
+                  </tbody>
+                </table>
               </Paper>
             </Item>
           </Grid>
