@@ -3,6 +3,8 @@ import { read, utils, WorkSheet } from 'xlsx'
 import { UploadedFileMap } from './index'
 import { InputKind } from "./FileInputSelector"
 
+import { inputKindConfig } from './config'
+
 export interface FileContents extends Array<any> { }
 
 // https://docs.sheetjs.com/docs/miscellany/errors#worksheet-only-includes-one-row-of-data
@@ -25,53 +27,25 @@ const convertXlsToJson = async (file: File): Promise<FileContents> => {
 }
 
 const normalize = (data: FileContents, kind: InputKind): FileContents => {
+  const config = inputKindConfig[kind]
+  let accountName = typeof config.accountName === 'string' && config.accountName
+  let date
+  let description
+  let value
 
-  switch (kind) {
-    case InputKind.AMEX:
-      return normalizeAMEX(data)
-
-    case InputKind.SEB:
-      return normalizeSEB(data)
-
-    case InputKind.SWEDBANK:
-      return normalizeSWEDBANK(data)
-
-    default:
-      throw(`Missing normalizer for "${kind}"!`)
-  }
-}
-
-const normalizeSEB = (data: FileContents): FileContents => {
-  const accountName = Object.values(data[1])[0]
-  let newData = data.slice(4)
+  let newData = data.slice(config.numberOfMetaRows)
+  let rowValues
   newData = newData.map((row: Array<any>) => {
-    let rowValues = Object.values(row)
-    return [accountName, rowValues[1], rowValues[3], parseInt(rowValues[4], 10)]
+    rowValues = Object.values(row)
+    accountName ||= typeof config.accountName === 'function' && config.accountName(data) || 'not set'
+    date = new Date(Date.parse(rowValues[config.dateCol])).toLocaleDateString('SV-se')
+    description = rowValues[config.descriptionCol]
+    value = parseInt(rowValues[config.valueCol], 10) * (config.valueMultiplier || 1)
+    return [accountName, date, description, value]
   })
+
   return newData
 }
-
-const normalizeSWEDBANK = (data: FileContents): FileContents => {
-  const accountName = Object.keys(data[0])[0]
-  let newData = data.slice(6)
-  newData = newData.map((row: Array<any>) => {
-    let rowValues = Object.values(row)
-    return [accountName, rowValues[2], rowValues[5], parseInt(rowValues[6], 10)]
-  })
-  return newData
-}
-
-const normalizeAMEX = (data: FileContents): FileContents => {
-  const accountName = "Amex"
-  let newData = data.slice(6)
-  newData = newData.map((row: Array<any>) => {
-    let rowValues = Object.values(row)
-    const formattedDate = new Date(Date.parse(rowValues[0])).toLocaleDateString('SV-se')
-    return [accountName, formattedDate, rowValues[1], parseInt(rowValues[4], 10) * -1]
-  })
-  return newData
-}
-
 
 export const generate = async (filesMap: UploadedFileMap): Promise<UploadedFileMap> => {
   let newMap: UploadedFileMap = {}
