@@ -87,10 +87,10 @@ const Normalizer = (): JSX.Element => {
                   <tbody>
                     {
                       Object.values(files).map(file => {
-                        return file.data?.map((row: Array<unknown>) => (
-                          <tr>
-                            {Object.values(row).map(col => (
-                              <td>{col}</td>
+                        return file.data?.map((row: Array<unknown>, i) => (
+                          <tr key={i}>
+                            {Object.values(row).map((col, i) => (
+                              <td key={i}>{col}</td>
                             ))}
                           </tr>)
                         )
