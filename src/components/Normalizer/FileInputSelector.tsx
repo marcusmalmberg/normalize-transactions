@@ -5,6 +5,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 
+import { inputKindConfig } from './config'
 import { InputKind, UploadedFile } from "./types";
 
 interface FileInputSelectorProps {
@@ -25,7 +26,7 @@ const FileInputSelector = ({ inputFile, onChange }: FileInputSelectorProps): JSX
         label="Typ"
       >
         {(Object.keys(InputKind) as Array<keyof typeof InputKind>).map((kind) =>
-          <MenuItem key={kind} value={InputKind[kind]}>{InputKind[kind]}</MenuItem>
+          <MenuItem key={kind} value={InputKind[kind]}>{inputKindConfig[InputKind[kind]].name}</MenuItem>
         )}
       </Select>
     </FormControl>
