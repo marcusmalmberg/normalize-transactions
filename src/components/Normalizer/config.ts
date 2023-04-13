@@ -52,14 +52,4 @@ export const inputKindConfig: InputKindConfigTypeMap = {
       return false
     },
   },
-
-  [InputKind.UNSURE]: { // TODO: Remove UNSURE kind.
-    name: "UNSURE_FIX_ME",
-    numberOfMetaRows: 6,
-    accountName: "unsure",
-    dateCol: 0,
-    descriptionCol: 1,
-    valueCol: 4,
-    autoDetect: (_data) => false,
-  },
 }

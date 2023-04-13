@@ -28,7 +28,7 @@ export const generate = (filesMap: UploadedFileMap): UploadedFileMap => {
   Object.values(filesMap).forEach(uploadedFile => {
     newMap[uploadedFile.file.name] = {
       ...uploadedFile,
-      normalizedData: normalize(uploadedFile.data, uploadedFile.kind),
+      normalizedData: uploadedFile.kind && normalize(uploadedFile.data, uploadedFile.kind),
     }
   })
 

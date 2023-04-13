@@ -1,6 +1,6 @@
 export interface UploadedFile {
   file: File;
-  kind: InputKind,
+  kind?: InputKind,
   data: FileContents,
   normalizedData?: FileContents,
 }
@@ -10,7 +10,6 @@ export interface UploadedFileMap {
 }
 
 export enum InputKind {
-  UNSURE = "unsure",
   AMEX = "amex",
   SEB = "seb",
   SWEDBANK = "swedbank",

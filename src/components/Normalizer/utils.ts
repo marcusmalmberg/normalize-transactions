@@ -3,13 +3,12 @@ import { read, utils, WorkSheet } from "xlsx"
 import { inputKindConfig } from "./config"
 import { FileContents, InputKind } from "./types"
 
-export const tryAutoDetect = (data: FileContents): InputKind => {
+export const tryAutoDetect = (data: FileContents): InputKind | undefined => {
   for(const [inputKindStr, config] of Object.entries(inputKindConfig)) {
     if(config.autoDetect(data)) {
       return inputKindStr as InputKind
     }
   }
-  return InputKind.UNSURE
 }
 
 export const convertXlsToJson = async (file: File): Promise<FileContents> => {
