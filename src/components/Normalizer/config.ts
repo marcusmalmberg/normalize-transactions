@@ -23,6 +23,7 @@ export const inputKindConfig: InputKindConfigTypeMap = {
     dateCol: 0,
     descriptionCol: 1,
     valueCol: 4,
+    valueMultiplier: -1,
   },
   [InputKind.SEB]: {
     name: "SEB",
