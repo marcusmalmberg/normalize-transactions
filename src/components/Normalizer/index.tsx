@@ -6,7 +6,7 @@ import Container from "@mui/material/Container"
 import Button from "@mui/material/Button"
 
 import Title from '../Title'
-import FileInputSelector from "./FileInputSelector"
+import FileInputSelectorRow from "./FileInputSelectorRow"
 import { generate } from "./normalize"
 import { InputKind, UploadedFileMap } from "./types"
 import { convertXlsToJson, tryAutoDetect } from "./utils"
@@ -61,7 +61,11 @@ const Normalizer = (): JSX.Element => {
             <Item>
               <Title>2. Välj typ</Title>
               <Paper sx={{ p: 2 }}>
-                {Object.values(files).map(file => <FileInputSelector key={file.file.name} inputFile={file} onChange={handleFileKindChanged} />)}
+                <table>
+                  <tbody>
+                    {Object.values(files).map(file => <FileInputSelectorRow key={file.file.name} inputFile={file} onChange={handleFileKindChanged} />)}
+                  </tbody>
+                </table>
               </Paper>
             </Item>
 
