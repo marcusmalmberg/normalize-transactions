@@ -5,14 +5,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 
-import { UploadedFile } from './index'
-
-export enum InputKind {
-  UNSURE = "unsure",
-  AMEX = "amex",
-  SEB = "seb",
-  SWEDBANK = "swedbank",
-}
+import { InputKind, UploadedFile } from "./types";
 
 interface FileInputSelectorProps {
   inputFile: UploadedFile;
@@ -20,7 +13,6 @@ interface FileInputSelectorProps {
 }
 
 const FileInputSelector = ({ inputFile, onChange }: FileInputSelectorProps): JSX.Element => {
-
   const handleChange = (event: SelectChangeEvent) => { onChange(inputFile.file, event.target.value as InputKind) }
 
   return <div>

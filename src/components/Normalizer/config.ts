@@ -1,5 +1,4 @@
-import { InputKind } from "./FileInputSelector"
-import { FileContents } from "./normalize"
+import { FileContents, InputKind } from "./types"
 
 interface InputKindConfigType {
   name: string

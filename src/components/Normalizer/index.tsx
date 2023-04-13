@@ -6,26 +6,17 @@ import Container from "@mui/material/Container"
 import Button from "@mui/material/Button"
 
 import Title from '../Title'
-import FileInputSelector, { InputKind } from "./FileInputSelector"
-import { generate, FileContents } from "./normalize";
+import FileInputSelector from "./FileInputSelector"
+import { generate } from "./normalize"
+import { InputKind, UploadedFileMap } from "./types"
 
 const Item = ({ children }: { children: any }): JSX.Element => {
   return <div>{children}</div>
 }
 
-export interface UploadedFile {
-  file: File;
-  kind: InputKind,
-  data?: FileContents,
-}
-
-export interface UploadedFileMap {
-  [handle: string]: UploadedFile;
-}
-
 const Normalizer = (): JSX.Element => {
-  const [inputFiles, setInputFiles] = useState<File[]>([]);
-  const [files, setFiles] = useState<UploadedFileMap>({});
+  const [inputFiles, setInputFiles] = useState<File[]>([])
+  const [files, setFiles] = useState<UploadedFileMap>({})
 
   const handleUpload = (files: File[]) => {
     setInputFiles(files)
@@ -87,7 +78,7 @@ const Normalizer = (): JSX.Element => {
                   <tbody>
                     {
                       Object.values(files).map(file => {
-                        return file.data?.map((row: Array<unknown>, i) => (
+                        return file.data?.map((row: Array<unknown>, i: number) => (
                           <tr key={i}>
                             {Object.values(row).map((col, i) => (
                               <td key={i}>{col}</td>

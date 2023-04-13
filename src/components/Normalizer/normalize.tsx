@@ -1,11 +1,7 @@
 import { read, utils, WorkSheet } from 'xlsx'
 
-import { UploadedFileMap } from './index'
-import { InputKind } from "./FileInputSelector"
-
 import { inputKindConfig } from './config'
-
-export interface FileContents extends Array<any> { }
+import { FileContents, InputKind, UploadedFileMap } from './types';
 
 // https://docs.sheetjs.com/docs/miscellany/errors#worksheet-only-includes-one-row-of-data
 function update_sheet_range(ws: WorkSheet) {
