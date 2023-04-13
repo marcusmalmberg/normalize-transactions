@@ -9,6 +9,7 @@ import Title from '../Title'
 import FileInputSelector from "./FileInputSelector"
 import { generate } from "./normalize"
 import { InputKind, UploadedFileMap } from "./types"
+import { convertXlsToJson, tryAutoDetect } from "./utils"
 
 const Item = ({ children }: { children: any }): JSX.Element => {
   return <div>{children}</div>
@@ -18,15 +19,17 @@ const Normalizer = (): JSX.Element => {
   const [inputFiles, setInputFiles] = useState<File[]>([])
   const [files, setFiles] = useState<UploadedFileMap>({})
 
-  const handleUpload = (files: File[]) => {
+  const handleUpload = async (files: File[]) => {
     setInputFiles(files)
     let fileMap: UploadedFileMap = {}
-    files.forEach((file: File) => {
+    await Promise.all(files.map(async file => {
+      let data = await convertXlsToJson(file)
       fileMap[file.name] = {
         file,
-        kind: InputKind.UNSURE,
+        data,
+        kind: tryAutoDetect(data),
       }
-    })
+    }))
     setFiles(fileMap)
   }
 
@@ -58,9 +61,6 @@ const Normalizer = (): JSX.Element => {
             <Item>
               <Title>2. Välj typ</Title>
               <Paper sx={{ p: 2 }}>
-                {
-                  // TODO: For each file: Select which kind of transactions. Then on change normalize/convert it to a common output
-                }
                 {Object.values(files).map(file => <FileInputSelector key={file.file.name} inputFile={file} onChange={handleFileKindChanged} />)}
               </Paper>
             </Item>
@@ -78,7 +78,7 @@ const Normalizer = (): JSX.Element => {
                   <tbody>
                     {
                       Object.values(files).map(file => {
-                        return file.data?.map((row: Array<unknown>, i: number) => (
+                        return file.normalizedData?.map((row: Array<unknown>, i: number) => (
                           <tr key={i}>
                             {Object.values(row).map((col, i) => (
                               <td key={i}>{col}</td>

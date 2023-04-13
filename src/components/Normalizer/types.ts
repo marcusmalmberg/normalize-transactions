@@ -1,7 +1,8 @@
 export interface UploadedFile {
   file: File;
   kind: InputKind,
-  data?: FileContents,
+  data: FileContents,
+  normalizedData?: FileContents,
 }
 
 export interface UploadedFileMap {
