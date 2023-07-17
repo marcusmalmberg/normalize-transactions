@@ -9,7 +9,7 @@ import Title from '../Title'
 import FileInputSelectorRow from "./FileInputSelectorRow"
 import { generate } from "./normalize"
 import { InputKind, UploadedFileMap } from "./types"
-import { convertXlsToJson, tryAutoDetect } from "./utils"
+import { convertXlsToJson, copyDOMTableToClipboard, tryAutoDetectInputKind } from "./utils"
 
 const Item = ({ children }: { children: any }): JSX.Element => {
   return <div>{children}</div>
@@ -27,7 +27,7 @@ const Normalizer = (): JSX.Element => {
       fileMap[file.name] = {
         file,
         data,
-        kind: tryAutoDetect(data),
+        kind: tryAutoDetectInputKind(data),
       }
     }))
     setFiles(fileMap)
@@ -78,7 +78,16 @@ const Normalizer = (): JSX.Element => {
                     setFiles(await generate(files))
                   }}>Generate</Button>
                 }
-                <table>
+                &nbsp;
+                {
+                  <Button variant="contained" onClick={async () => {
+                    let tableElement = document.getElementById('resultTable')
+                    if(tableElement) {
+                      copyDOMTableToClipboard(tableElement)
+                    }
+                  }}>Copy to clipboard</Button>
+                }
+                <table id="resultTable">
                   <tbody>
                     {
                       Object.values(files).map(file => {

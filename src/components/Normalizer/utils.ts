@@ -3,11 +3,21 @@ import { read, utils, WorkSheet } from "xlsx"
 import { inputKindConfig } from "./config"
 import { FileContents, InputKind } from "./types"
 
-export const tryAutoDetect = (data: FileContents): InputKind | undefined => {
+export const tryAutoDetectInputKind = (data: FileContents): InputKind | undefined => {
   for(const [inputKindStr, config] of Object.entries(inputKindConfig)) {
     if(config.autoDetect(data)) {
       return inputKindStr as InputKind
     }
+  }
+}
+
+export const copyDOMTableToClipboard = async (tableElement: HTMLElement) => {
+  let text = tableElement?.innerText;
+  try {
+    await navigator.clipboard.writeText(text);
+    console.log('Content copied to clipboard');
+  } catch (err) {
+    console.error('Failed to copy: ', err);
   }
 }
 
