@@ -36,6 +36,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description.startsWith("HBO MAX /")) return "HBO"
   if(description === "SPOTIFY STOCKHOLM") return "Spotify"
   if(description === "PAYEX SVERIGE AB/HEMFRID") return "Hemfrid"
+  if(description === "SVERIGES INGENJÖRER") return "Sveriges Ingenjörer"
 
   if(description.startsWith("HEMKÖP")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("ICA")) return "Mat - hemma (inklusive allt från Mathem)"
@@ -58,10 +59,14 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "GOOGLE *GOOGLE STORAGE G.CO/HELPPAY#") return "Google (lagring)"
   if(description === "AVGIFT KORT") return "Kortavgifter"
 
-  if(description === "52220011968") return "Intern överföring"
-  if(description === "56580076852") return "Intern överföring"
+  if(description === "52220011968") return "Intern överföring" // Caroline Vardagsekonomi
+  if(description === "56580076852") return "Intern överföring" // Gemensamt kort
+  if(description === "92527399894") return "Intern överföring" // Caroline SBAB
+  if(description === "59091334673") return "Intern överföring" // Caroline Personallönekonto
+  if(description === "53572967201") return "Intern överföring" // Caroline Bra Sparande
+  if(description === "52350107922") return "Intern överföring" // Gemensamt betal
   if(description === "CAROLINE MAL") return "Intern överföring"
-  if(description.startsWith("Överföring G ")) return "Intern överföring"
+  if(description.startsWith("G ")) return "Intern överföring"
   if(description === "Överföring hyra") return "Intern överföring"
   if(description === "Överföring matmarcus") return "Intern överföring"
   if(description === "GEMENSAM BET") return "Intern överföring"
