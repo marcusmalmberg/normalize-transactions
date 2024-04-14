@@ -90,7 +90,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "LÅN 41744111") return "Amortering + ränta"
   if(description === "LÅN 41744103") return "Amortering + ränta"
   if(description === "LÅN 41744081") return "Amortering + ränta"
-  if(description === "BRF ALMEN 6" && value === -5211) return "Hyra inkl. balkongfond"
+  if(description === "BRF ALMEN 6") return "Hyra inkl. balkongfond"
 
   if(description === "BARNBIDRAG A") return "Sparande Todd/knodd "
   if(description === "Överföring barnbidrag") return "Sparande Todd/knodd "
