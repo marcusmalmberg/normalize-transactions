@@ -35,13 +35,16 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description.startsWith("NETFLIX.COM")) return "Netflix"
   if(description.startsWith("HBO MAX /")) return "HBO"
   if(description === "SPOTIFY STOCKHOLM") return "Spotify"
+  if(description === "SPOTIFYSE STOCKHOLM") return "Spotify"
   if(description === "PAYEX SVERIGE AB/HEMFRID") return "Hemfrid"
   if(description === "SVERIGES INGENJÖRER") return "Sveriges Ingenjörer"
 
+  if(description === "3 (HI3G ACCESS AB)") return "Mobil Caroline"
+
   if(description.startsWith("HEMKÖP")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("ICA")) return "Mat - hemma (inklusive allt från Mathem)"
-  if(description === "WOLT STOCKHOLM") return "Mat - Restaurang/Take away"
-  if(description === "FOODORA AB STOCKHOLM") return "Mat - Restaurang/Take away"
+  if(description.startsWith("COOP")) return "Mat - hemma (inklusive allt från Mathem)"
+  if(description === "MATHEM I SVERIGE AB STOCKHOLM") return "Mat - hemma (inklusive allt från Mathem)"
 
   if(description === "SL STOCKHOLM") return "Kollektivtrafik"
   if(description === "SL") return "Kollektivtrafik"
@@ -57,7 +60,9 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description.startsWith("HEROKU")) return "Övrigt återkommande"
   if(description === "AWS EMEA AWS.AMAZON.CO") return "Övrigt återkommande"
   if(description === "GOOGLE *GOOGLE STORAGE G.CO/HELPPAY#") return "Google (lagring)"
+  if(description === "GOOGLE *GOOGLE PLAY AP G.CO/HELPPAY#") return "Google (lagring)"
   if(description === "AVGIFT KORT") return "Kortavgifter"
+  if(description === "KORTAVGIFT") return "Kortavgifter"
 
   if(description === "52220011968") return "Intern överföring" // Caroline Vardagsekonomi
   if(description === "56580076852") return "Intern överföring" // Gemensamt kort
@@ -100,8 +105,26 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "ISK FOND" && kind === InputKind.SEB) return "ISK Caroline"
   if(description === "LÖN" && kind === InputKind.SEB) return "Insättning Caroline - Lön"
   if(description === "FKASSA" && kind === InputKind.SEB) return "Insättning Caroline - Försäkringskassan"
+  if(description === "Dagersättning" && kind === InputKind.SEB) return "Insättning Caroline - Försäkringskassan"
   if(description === "LÖN" && kind === InputKind.SWEDBANK) return "Insättning Marcus - Lön"
   if(description === "FKASSA" && kind === InputKind.SWEDBANK) return "Insättning Marcus - Försäkringskassan"
+  if(description === "Dagersättning" && kind === InputKind.SWEDBANK) return "Insättning Marcus - Försäkringskassan"
+
+  if(description.startsWith("CIRCLE K")) return "Bensin"
+  if(description.startsWith("OKQ8")) return "Bensin"
+  if(description === "TRÄNGSELSKATT TRANSPORTS") return "Övrigt bil"
+
+  if(description.startsWith("APOTEKET AB")) return "Apotek"
+  if(description.startsWith("APOTEK HJART")) return "Apotek"
+  if(description === "MEDS APOTEK") return "Apotek"
+
+  if(description === "WOLT STOCKHOLM") return "Mat - Restaurang/Take away"
+  if(description === "FOODORA AB STOCKHOLM") return "Mat - Restaurang/Take away"
+  if(description === "Eat Greenii STOCKHOLM") return "Mat - Restaurang/Take away"
+  if(description === "ZETTLE *LAO LAO AB STOCKHOLM") return "Mat - Restaurang/Take away"
+  if(description.startsWith("DU BON PAIN")) return "Mat - Restaurang/Take away"
+  if(description.startsWith("AZIZ GRILLEN")) return "Mat - Restaurang/Take away"
+  if(description.startsWith("LULUS RASUND")) return "Mat - Restaurang/Take away"
 
   return ""
 }
