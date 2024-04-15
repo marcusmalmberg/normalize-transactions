@@ -43,6 +43,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
 
   if(description.startsWith("HEMKÖP")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("ICA")) return "Mat - hemma (inklusive allt från Mathem)"
+  if(description.startsWith("MAXI ICA")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("COOP")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description === "MATHEM I SVERIGE AB STOCKHOLM") return "Mat - hemma (inklusive allt från Mathem)"
 
@@ -51,6 +52,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description.startsWith("SL /")) return "Kollektivtrafik"
   if(description === "EASYPARK STOCKHOLM") return "Parkering - ej hemma"
   if(description.startsWith("PARKSTER ")) return "Parkering - ej hemma"
+  if(description.startsWith("AIMO, AIMO PARK")) return "Parkering - ej hemma"
 
   if(description === "KLARNA STOCKHOLM") return "Klarna"
   if(description === "KLARNA BANK") return "Klarna"
@@ -70,6 +72,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "59091334673") return "Intern överföring" // Caroline Personallönekonto
   if(description === "53572967201") return "Intern överföring" // Caroline Bra Sparande
   if(description === "52350107922") return "Intern överföring" // Gemensamt betal
+  if(description === "52353463517") return "Intern överföring" // Gemensamt familj
   if(description === "CAROLINE MAL") return "Intern överföring"
   if(description.startsWith("Överföring G ")) return "Intern överföring"
   if(description === "Överföring hyra") return "Intern överföring"
@@ -86,6 +89,8 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "HYRA M") return "Intern överföring"
   if(description === "MARCUS MALMB") return "Intern överföring"
   if(description === "CAROLINE ALV") return "Intern överföring"
+  if(description === "46709320511") return "Intern överföring"
+  if(description === "Swish skickad +46730532237") return "Intern överföring"
 
   if(description === "BARNBDR") return "Barnbidrag C & M"
   if(description === "Barnbidrag") return "Barnbidrag C & M"
@@ -117,6 +122,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description.startsWith("APOTEKET AB")) return "Apotek"
   if(description.startsWith("APOTEK HJART")) return "Apotek"
   if(description === "MEDS APOTEK") return "Apotek"
+  if(description === "LYKO SVERIGE") return "Smink C"
 
   if(description === "WOLT STOCKHOLM") return "Mat - Restaurang/Take away"
   if(description === "FOODORA AB STOCKHOLM") return "Mat - Restaurang/Take away"
