@@ -40,6 +40,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "SVERIGES INGENJÖRER") return "Sveriges Ingenjörer"
 
   if(description === "3 (HI3G ACCESS AB)") return "Mobil Caroline"
+  if(description === "HI3G ACCESS") return "Mobil Caroline"
 
   if(description.startsWith("HEMKÖP")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("ICA")) return "Mat - hemma (inklusive allt från Mathem)"
@@ -53,6 +54,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "EASYPARK STOCKHOLM") return "Parkering - ej hemma"
   if(description.startsWith("PARKSTER ")) return "Parkering - ej hemma"
   if(description.startsWith("AIMO, AIMO PARK")) return "Parkering - ej hemma"
+  if(description.startsWith("EPARKERA SE")) return "Parkering - ej hemma"
 
   if(description === "KLARNA STOCKHOLM") return "Klarna"
   if(description === "KLARNA BANK") return "Klarna"
@@ -65,6 +67,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "GOOGLE *GOOGLE PLAY AP G.CO/HELPPAY#") return "Google (lagring)"
   if(description === "AVGIFT KORT") return "Kortavgifter"
   if(description === "KORTAVGIFT") return "Kortavgifter"
+  if(description === "PRIS BANKKORT MA") return "Kortavgifter"
 
   if(description === "52220011968") return "Intern överföring" // Caroline Vardagsekonomi
   if(description === "56580076852") return "Intern överföring" // Gemensamt kort
@@ -114,9 +117,11 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "LÖN" && kind === InputKind.SWEDBANK) return "Insättning Marcus - Lön"
   if(description === "FKASSA" && kind === InputKind.SWEDBANK) return "Insättning Marcus - Försäkringskassan"
   if(description === "Dagersättning" && kind === InputKind.SWEDBANK) return "Insättning Marcus - Försäkringskassan"
+  if(description === "RÅSUNDA BARN" && value > 0) return "Försäljningar"
 
   if(description.startsWith("CIRCLE K")) return "Bensin"
   if(description.startsWith("OKQ8")) return "Bensin"
+  if(description.startsWith("INGO ")) return "Bensin"
   if(description === "TRÄNGSELSKATT TRANSPORTS") return "Övrigt bil"
 
   if(description.startsWith("APOTEKET AB")) return "Apotek"
