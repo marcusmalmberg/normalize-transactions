@@ -29,11 +29,14 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   description = description.replaceAll(/\s+/g, ' ')
   if(description === "CENTRALA STUDIESTÖDSNÄMN") return "CSN Caroline"
   if(description === "Centrala studies") return "CSN Marcus"
+  if(description === "CSN Centrala stu") return "CSN Marcus"
   if(description === "FOLKTANDVÅRD") return "Tandvården Caroline"
 
   if(description === "AMAZON PRIME WWW.AMAZON.SE") return "Prime"
   if(description.startsWith("NETFLIX.COM")) return "Netflix"
   if(description.startsWith("HBO MAX /")) return "HBO"
+  if(description === "MAX*MAX FORE STANDARD STOCKHOLM") return "HBO"
+  if(description === "MAX*HELP.MAX.COM STOCKHOLM") return "HBO"
   if(description === "SPOTIFY STOCKHOLM") return "Spotify"
   if(description === "SPOTIFYSE STOCKHOLM") return "Spotify"
   if(description === "PAYEX SVERIGE AB/HEMFRID") return "Hemfrid"
@@ -43,10 +46,15 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "HI3G ACCESS") return "Mobil Caroline"
 
   if(description.startsWith("HEMKÖP")) return "Mat - hemma (inklusive allt från Mathem)"
+  if(description.startsWith("Hemköp")) return "Mat - hemma (inklusive allt från Mathem)"
+  if(description.startsWith("HEMK P SOLNA")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("ICA")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("MAXI ICA")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("COOP")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description === "MATHEM I SVERIGE AB STOCKHOLM") return "Mat - hemma (inklusive allt från Mathem)"
+
+  if(description.startsWith("SYSTEMBOLAGET ")) return "Systembolaget"
+  if(description === "SOLNA STAD" && value === -2813) return "Förskola"
 
   if(description === "SL STOCKHOLM") return "Kollektivtrafik"
   if(description === "SL") return "Kollektivtrafik"
@@ -122,10 +130,13 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description.startsWith("CIRCLE K")) return "Bensin"
   if(description.startsWith("OKQ8")) return "Bensin"
   if(description.startsWith("INGO ")) return "Bensin"
+  if(description.startsWith("PREEM ")) return "Bensin"
   if(description === "TRÄNGSELSKATT TRANSPORTS") return "Övrigt bil"
+  if(description === "LF MOTOR") return "Försäkring Bil"
 
   if(description.startsWith("APOTEKET AB")) return "Apotek"
   if(description.startsWith("APOTEK HJART")) return "Apotek"
+  if(description.startsWith("APOTEKET ")) return "Apotek"
   if(description === "MEDS APOTEK") return "Apotek"
   if(description === "LYKO SVERIGE") return "Smink C"
 
