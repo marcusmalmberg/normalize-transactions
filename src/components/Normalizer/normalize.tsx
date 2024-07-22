@@ -42,8 +42,8 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "PAYEX SVERIGE AB/HEMFRID") return "Hemfrid"
   if(description === "SVERIGES INGENJÖRER") return "Sveriges Ingenjörer"
 
-  if(description === "3 (HI3G ACCESS AB)") return "Mobil Caroline"
-  if(description === "HI3G ACCESS") return "Mobil Caroline"
+  if(description === "3 (HI3G ACCESS AB)") return "Mobil och Bredband"
+  if(description === "HI3G ACCESS") return "Mobil och Bredband"
 
   if(description.startsWith("HEMKÖP")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("Hemköp")) return "Mat - hemma (inklusive allt från Mathem)"
