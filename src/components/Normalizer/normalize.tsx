@@ -85,6 +85,8 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "53572967201") return "Intern överföring" // Caroline Bra Sparande
   if(description === "52350107922") return "Intern överföring" // Gemensamt betal
   if(description === "52353463517") return "Intern överföring" // Gemensamt familj
+  if(description === "59972921646") return "Intern överföring" // Gemensamt buffer
+  if(description === "52353463533") return "Intern överföring" // Gemensamt inredning/konst
   if(description === "CAROLINE MAL") return "Intern överföring"
   if(description.startsWith("Överföring G ")) return "Intern överföring"
   if(description === "Överföring hyra") return "Intern överföring"
