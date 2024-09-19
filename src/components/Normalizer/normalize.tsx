@@ -152,6 +152,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description.startsWith("DU BON PAIN")) return "Mat - Restaurang/Take away"
   if(description.startsWith("AZIZ GRILLEN")) return "Mat - Restaurang/Take away"
   if(description.startsWith("LULUS RASUND")) return "Mat - Restaurang/Take away"
+  if(description.startsWith("BERGSHAMRA P/")) return "Mat - Restaurang/Take away" // Pizzeria bergshamra
 
   return ""
 }
