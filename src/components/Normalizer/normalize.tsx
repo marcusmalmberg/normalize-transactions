@@ -31,6 +31,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "Centrala studies") return "CSN Marcus"
   if(description === "CSN Centrala stu") return "CSN Marcus"
   if(description === "FOLKTANDVÅRD") return "Tandvården Caroline"
+  if(description === "1236065924") return "Kroppsvård / Behandlingar / Träning" // Naglar C
 
   if(description === "AMAZON PRIME WWW.AMAZON.SE") return "Prime"
   if(description.startsWith("NETFLIX.COM")) return "Netflix"
@@ -83,14 +84,22 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description === "92527399894") return "Intern överföring" // Caroline SBAB
   if(description === "59091334673") return "Intern överföring" // Caroline Personallönekonto
   if(description === "53572967201") return "Intern överföring" // Caroline Bra Sparande
+  if(description === "56993197545") return "Intern överföring" // Caroline Handpenning
   if(description === "52350107922") return "Intern överföring" // Gemensamt betal
   if(description === "52353463517") return "Intern överföring" // Gemensamt familj
   if(description === "59972921646") return "Intern överföring" // Gemensamt buffer
   if(description === "52353463533") return "Intern överföring" // Gemensamt inredning/konst
   if(description === "CAROLINE MAL") return "Intern överföring"
   if(description.startsWith("Överföring G ")) return "Intern överföring"
+  if(description === "G Resa") return "Intern överföring"
+  if(description === "G Familj") return "Intern överföring"
+  if(description === "G Buffer") return "Intern överföring"
+  if(description === "G Transpor") return "Intern överföring"
+  if(description === "G Inrednin") return "Intern överföring"
   if(description === "Överföring hyra") return "Intern överföring"
+  if(description === "hyra") return "Intern överföring"
   if(description === "Överföring matmarcus") return "Intern överföring"
+  if(description === "matmarcus") return "Intern överföring"
   if(description === "GEMENSAM BET") return "Intern överföring"
   if(description === "BRA SPAR") return "Intern överföring"
   if(description === "RESA") return "Intern överföring"
