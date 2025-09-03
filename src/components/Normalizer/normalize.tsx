@@ -54,6 +54,8 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description.startsWith("ICA")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("MAXI ICA")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description.startsWith("COOP")) return "Mat - hemma (inklusive allt från Mathem)"
+  if(description.startsWith("STORA COOP")) return "Mat - hemma (inklusive allt från Mathem)"
+  if(description.startsWith("LIDL")) return "Mat - hemma (inklusive allt från Mathem)"
   if(description === "MATHEM I SVERIGE AB STOCKHOLM") return "Mat - hemma (inklusive allt från Mathem)"
 
   if(description.startsWith("SYSTEMBOLAGET ")) return "Systembolaget"
@@ -149,6 +151,7 @@ const autoDetectCategory = (kind: InputKind, description: string, value: number 
   if(description.startsWith("PREEM ")) return "Bensin"
   if(description === "TRÄNGSELSKATT TRANSPORTS") return "Övrigt bil"
   if(description === "LF MOTOR") return "Försäkring Bil"
+  if(description === "Gjensidige") return "Försäkring Bil"
 
   if(description.startsWith("APOTEKET AB")) return "Apotek"
   if(description.startsWith("APOTEK HJART")) return "Apotek"
